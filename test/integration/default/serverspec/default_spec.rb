@@ -37,6 +37,10 @@ describe package('php5-fpm') do
   it { should be_installed }
 end
 
+describe package ('php5-mysqlnd') do 
+  it { should be_installed }
+end
+
 
 
 # Server/Daemon tests
@@ -45,7 +49,7 @@ end
 
 describe "Web Server" do
 
-  context package('nginx') do
+  context package('apache2') do
     it { should be_installed }
   end
 
@@ -53,8 +57,8 @@ describe "Web Server" do
     expect(port(80)).to be_listening
   end
 
-  it "has a running service of nginx" do
-    expect(service("nginx")).to be_running
+  it "has a running service of apache2" do
+    expect(service("apache2")).to be_running
   end
   
 end

@@ -3,27 +3,23 @@ chef-phpmyadmin
 
 A Chef cookbook for the popular MySQL management application PHPMyAdmin
 
-You can clone it and import it to Chef as
+This started out as a fork of the original here: https://github.com/priestjim/chef-phpmyadmin
+but, because we wanted to keep the packages of PHP consistent between all our boxen, we've decided
+to maintain it separately, using PHP 5.4 from Dotdeb. 
 
-	cd cookbooks
-	git clone git://github.com/priestjim/chef-phpmyadmin.git phpmyadmin
-	knife cookbook upload phpmyadmin
+The goal is to use this cookbook in our production servers, with some customizations for single sign on
+for Pressable customers. Hopefully, others can use this to install PHPMyAdmin in their infrastructure as well.
 
-The latest and greatest revision of this cookbook will always be available
-at https://github.com/priestjim/chef-phpmyadmin
 
 Requirements
 ============
 
-This cookbook requires the following cookbooks to be present and installed:
+This depends on the following cookbooks
 
-* chef-php from https://github.com/priestjim/chef-php
-
-It also suggests the following:
-
-* nginx
 * apache2
 * percona
+* apt-dotdeb
+* zk-php
 
 Supported Operating Systems
 ===========================
@@ -32,11 +28,7 @@ This cookbook supports the following Linux distributions:
 
 * Ubuntu
 * Debian
-* Fedora
-* CentOS
-* RedHat
 
-It also supports **Chef 10.14** and higher
 
 Attributes
 ==========

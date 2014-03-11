@@ -19,12 +19,38 @@
 
 require 'digest/sha1'
 
-# PHP Recipe includes we already know PHPMyAdmin needs
-include_recipe 'php'
-include_recipe 'php::module_mbstring'
-include_recipe 'php::module_mcrypt'
-include_recipe 'php::module_gd'
-include_recipe 'php::module_mysql'
+include_recipe 'apt'
+include_recipe 'apt-dotdeb'
+
+package "apt-transport-https" do
+  action :upgrade
+end
+
+## Install some basic utilities that we need/want.
+package "htop"
+package "redis-server"
+package "redis-tools"
+package "memcached"
+package "apache2"
+
+# Go through the list of packages mentioned in attributes/default.rb
+# and install them.
+
+node['pr-php']['packages'].each do |package_name, version_to_install|
+  unless version_to_install == false
+    package package_name do
+      version version_to_install
+    end
+  end
+end
+
+
+# Install the Percona MySQL Client
+include_recipe 'percona::client'
+include_recipe 'percona::server'
+
+
+
 
 home = node['phpmyadmin']['home']
 user = node['phpmyadmin']['user']
@@ -114,23 +140,3 @@ template "#{home}/config.inc.php" do
 	mode 00644
 end
 
-if (node['phpmyadmin'].attribute?('fpm') && node['phpmyadmin']['fpm'])
- 	php_fpm 'phpmyadmin' do
-	  action :add
-	  user user
-	  group group
-	  socket true
-	  socket_path node['phpmyadmin']['socket']
-	  socket_user user
-	  socket_group group
-	  socket_perms '0666'
-	  start_servers 2
-	  min_spare_servers 2
-	  max_spare_servers 8
-	  max_children 8
-	  terminate_timeout (node['php']['ini_settings']['max_execution_time'].to_i + 20)
-	  value_overrides({
-	    :error_log => "#{node['php']['fpm_log_dir']}/phpmyadmin.log"
-	  })
-	end
-end

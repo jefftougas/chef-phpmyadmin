@@ -29,17 +29,47 @@ This cookbook supports the following Linux distributions:
 * Ubuntu
 * Debian
 
+## Installation
+
+By itself, this cookbook is fairly useless. I can't think of a reason why you would want
+to install phpmyadmin to a local server without any databases, or other web apps installed
+
+Ideally, this cookbook is included in your larger set of infrastructure cookbooks, using Berkshelf
+or something along the lines.
+
+```Berksfile
+ site :opscode
+
+ metadata
+
+ ... your other stuff.
+
+ cookbook 'phpmyadmin',
+    :git => git@github.com:pressable/chef-phpmyadmin.git
+
+```
+
+1. Add `phpmyadmin::default` to your runlist.
+
+
 ## Testing
 
-This utilizes Test Kitchen (http://kitchen.ci/) for unit tests. By default, we use the Rackspace Cloud servers
-to test things, as they usually have more CPU than my laptop, and internet connection is usually very good when
-I am developing this stuff. 
+This utilizes Test Kitchen (http://kitchen.ci/) for unit tests. 
+
+```bash
+ git clone git@github.com:pressable/chef-phpmyadmin.git
+ cd chef-phpmyadmin
+ kitchen test
+```
+
+### Rackspace Cloud Testing 
 
 You'll need to specify a Rackspace Username/API Key in order for the test to run. 
 
 ```bash
  export RACKSPACE_CI_USERNAME="your.username.for.mycloud.rackspace.com"
  export RACKSPACE_CI_API_KEY="your.rackspace.password.or.api.key"
+ cp kitchen.rackspace.yml .kitchen.local.yml
  kitchen test
  ....
  kitchen destroy

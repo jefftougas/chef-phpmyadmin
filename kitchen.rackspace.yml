@@ -15,6 +15,5 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[phpmyadmin::server]
-      - recipe[phpmyadmin::pma]
+      - recipe[phpmyadmin::default]
     attributes:

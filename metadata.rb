@@ -1,6 +1,6 @@
 name              'phpmyadmin'
-maintainer        'Panagiotis PJ Papadomitsos'
-maintainer_email  'pj@ezgr.net'
+maintainer        'Vid Luther'
+maintainer_email  'vid@pressable.com'
 license           'Apache Public License 2.0'
 description       'Installs/Configures PHPMyAdmin'
 long_description   IO.read(File.join(File.dirname(__FILE__), 'README.md')).chomp
@@ -14,13 +14,9 @@ depends 'percona'
 recommends        'nginx'
 recommends        'apache2'
   
-suggests          'percona'
-suggests          'mysql'
 
 supports          'ubuntu', '>= 12.04'
 supports          'debian', '>= 6.0'
-supports          'centos', '>= 6.0'
-supports          'redhat', '>= 9.0'
 
 attribute 'phpmyadmin/version',
   :display_name => 'PHPMyAdmin version',

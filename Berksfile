@@ -5,6 +5,10 @@ site :opscode
 
 metadata
 
+cookbook 'percona',
+        :git => 'https://github.com/phlipper/chef-percona'
+
+
 cookbook 'motd-tail'
 
 cookbook 'zk-php',

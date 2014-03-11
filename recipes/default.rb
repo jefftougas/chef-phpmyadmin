@@ -22,6 +22,13 @@ require 'digest/sha1'
 include_recipe 'apt'
 include_recipe 'apt-dotdeb'
 
+# Install the Percona MySQL Client
+include_recipe 'percona::client'
+include_recipe 'percona::server'
+
+include_recipe 'percona::toolkit'
+
+
 package "apt-transport-https" do
   action :upgrade
 end
@@ -44,10 +51,6 @@ node['pr-php']['packages'].each do |package_name, version_to_install|
   end
 end
 
-
-# Install the Percona MySQL Client
-include_recipe 'percona::client'
-include_recipe 'percona::server'
 
 
 

@@ -10,3 +10,11 @@ end
 describe user('phpmyadmin') do
   it { should have_login_shell '/usr/sbin/nologin' }
 end
+
+describe file('/etc/apache2/sites-available/phpmyadmin.conf') do
+  it { should be_file }
+end
+
+describe file('/etc/apache2/sites-enabled/phpmyadmin.conf') do
+  it { should be_file }
+end

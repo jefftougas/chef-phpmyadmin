@@ -2,9 +2,9 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 #
-# Author:: Panagiotis Papadomitsos (<pj@ezgr.net>)
+# Author:: Vid Luther (vid@pressable.com)
 #
-# Copyright 2012, Panagiotis Papadomitsos
+# Copyright 2014, Vid Luther
 #
 # Licensed under the Apache License, Version 2.0 (the 'License');
 # you may not use this file except in compliance with the License.
@@ -22,20 +22,28 @@
 Vagrant.configure('2') do |config|
 
   config.berkshelf.enabled = true
+  config.omnibus.chef_version = :latest
+
+  config.vm.box_url = "https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box"
+  config.vm.box = "opscode_ubuntu-12.04_provisionerless"
+
+  # The ip address we'll assign to this virtual machine
+  config.vm.network :private_network, ip: "33.33.33.10"
+  config.vm.network :public_network
+
+  # If you want to login to the box directly in a window, instead of just doing
+  # vagrant ssh, set this to true. 
   config.vm.provider :virtualbox do |v|
-    v.gui = true
+    v.gui = false
   end
 
   config.vm.box = 'ubuntu'
   config.vm.hostname = 'phpmyadmin'
-  config.vm.network :private_network, ip: '172.16.6.2'
   config.vm.provision :chef_solo do |chef|
     chef.arguments = '-Fdoc'
     chef.run_list = [
-      'recipe[nginx]',
-      'recipe[percona]',
-      'recipe[php]',
-      'recipe[phpmyadmin]'
+      'recipe[phpmyadmin::server]',
+      'recipe[phpmyadmin::pma]'
     ]
 
   end

@@ -18,6 +18,8 @@
 #
 require 'digest/sha1'
 
+include_recipe "apache2"
+
 home = node['phpmyadmin']['home']
 user = node['phpmyadmin']['user']
 group = node['phpmyadmin']['group']
@@ -104,4 +106,14 @@ template "#{home}/config.inc.php" do
 	owner user
 	group group
 	mode 00644
+end
+
+# Now build out the apache virtual host config. 
+# Just a reminder to myself, the definition of 'web_app'
+# https://github.com/opscode-cookbooks/apache2/blob/master/definitions/web_app.rb
+
+
+web_app "phpmyadmin" do
+  server_name node['fqdn']
+  docroot "/opt/phpmyadmin"
 end

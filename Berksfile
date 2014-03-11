@@ -5,6 +5,8 @@ site :opscode
 
 metadata
 
+cookbook 'apache2'
+
 cookbook 'percona',
         :git => 'https://github.com/phlipper/chef-percona'
 

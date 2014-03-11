@@ -12,7 +12,7 @@ depends 'zk-php'
 depends 'percona'
 
 recommends        'nginx'
-recommends        'apache2'
+depends        'apache2'
   
 
 supports          'ubuntu', '>= 12.04'

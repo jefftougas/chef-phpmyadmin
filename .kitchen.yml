@@ -1,6 +1,10 @@
 ---
 driver:
-  name: vagrant
+  name: rackspace
+  rackspace_username:	<%= ENV['RACKSPACE_CI_USERNAME'] %>
+  rackspace_api_key:  <%= ENV['RACKSPACE_CI_API_KEY'] %>
+  require_chef_omnibus: latest
+  rackspace_region: IAD 
 
 provisioner:
   name: chef_solo

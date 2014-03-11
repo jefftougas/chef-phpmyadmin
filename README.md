@@ -1,5 +1,5 @@
-chef-phpmyadmin
-===============
+# chef-phpmyadmin
+
 
 A Chef cookbook for the popular MySQL management application PHPMyAdmin
 
@@ -11,8 +11,8 @@ The goal is to use this cookbook in our production servers, with some customizat
 for Pressable customers. Hopefully, others can use this to install PHPMyAdmin in their infrastructure as well.
 
 
-Requirements
-============
+## Requirements
+
 
 This depends on the following cookbooks
 
@@ -21,13 +21,31 @@ This depends on the following cookbooks
 * apt-dotdeb
 * zk-php
 
-Supported Operating Systems
-===========================
+## Supported Operating Systems
+
 
 This cookbook supports the following Linux distributions:
 
 * Ubuntu
 * Debian
+
+## Testing
+
+This utilizes Test Kitchen (http://kitchen.ci/) for unit tests. By default, we use the Rackspace Cloud servers
+to test things, as they usually have more CPU than my laptop, and internet connection is usually very good when
+I am developing this stuff. 
+
+You'll need to specify a Rackspace Username/API Key in order for the test to run. 
+
+```bash
+ export RACKSPACE_CI_USERNAME="your.username.for.mycloud.rackspace.com"
+ export RACKSPACE_CI_API_KEY="your.rackspace.password.or.api.key"
+ kitchen test
+ ....
+ kitchen destroy
+ ```
+
+Don't forget to destroy the test instance, or you'll incur usage fees from Rackspace. 
 
 
 Attributes

@@ -8,13 +8,7 @@ describe package('apt-transport-https') do
   it { should be_installed }
 end
 
-describe package('percona-server-client') do
-  it { should be_installed }
-end
 
-describe package('percona-server-server-5.5') do
-  it { should be_installed }
-end
 
 describe package('php5-redis') do
   it { should be_installed }
@@ -61,5 +55,18 @@ describe "Web Server" do
     expect(service("apache2")).to be_running
   end
   
+end
+
+
+
+# MySQL Specific Stuff
+describe "Database Server" do 
+  context package('percona-server-client-5.5') do
+    it { should be_installed }
+  end
+
+  context package('percona-server-server-5.5') do
+    it { should be_installed }
+  end
 end
 

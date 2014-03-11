@@ -84,8 +84,6 @@ default["percona"]["server"]["package"]                       = "percona-server-
 
 
 
-
-
 # Since this is a development environment. Don't set a root password, or a password for the debian maintenance user.
 default["percona"]["skip_passwords"]                          = true
 default["percona"]["server"]["debian_username"]                 = "root"

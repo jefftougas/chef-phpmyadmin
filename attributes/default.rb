@@ -40,9 +40,54 @@ when 'rhel'
   default['phpmyadmin']['upload_dir'] = '/var/lib/php/uploads'
   default['phpmyadmin']['save_dir'] = '/var/lib/php/uploads'
 end
+
+
 default['phpmyadmin']['maxrows'] = 100
 default['phpmyadmin']['protect_binary'] = 'blob'
 default['phpmyadmin']['default_lang'] = 'en'
 default['phpmyadmin']['default_display'] = 'horizontal'
 default['phpmyadmin']['query_history'] = true
 default['phpmyadmin']['query_history_size'] = 100
+
+
+default['pr-php']['packages']['php5'] = nil
+default['pr-php']['packages']['php5-apc']  = nil
+
+default['pr-php']['packages']['php5-fpm']  = nil
+
+default['pr-php']['packages']['php5-dev'] = nil
+default['pr-php']['packages']['php5-cli'] = nil
+default['pr-php']['packages']['php-pear'] = nil
+default['pr-php']['packages']['php5-mcrypt'] = nil
+default['pr-php']['packages']['php5-ldap'] = nil
+default['pr-php']['packages']['php5-mysqlnd'] = nil
+default['pr-php']['packages']['php5-memcache'] = nil
+default['pr-php']['packages']['php5-curl'] = nil
+default['pr-php']['packages']['php5-gd'] = nil
+default['pr-php']['packages']['php5-xmlrpc'] = nil
+default['pr-php']['packages']['php5-xsl'] = nil
+default['pr-php']['packages']['php5-redis'] = nil
+default['pr-php']['packages']['php5-memcached'] = nil
+
+
+#MySQL specific defaults
+# Start percona server on boot
+default["percona"]["server"]["enable"]                          = true
+
+
+default["percona"]["auto_restart"] = true
+default["percona"]["server"]["socket"]                        = "/var/run/mysqld/mysqld.sock"
+default["percona"]["server"]["default_storage_engine"]        = "InnoDB"
+default["percona"]["server"]["includedir"]                    = "/etc/mysql/conf.d/"
+default["percona"]["server"]["pidfile"]                       = "/var/run/mysqld/mysqld.pid"
+default["percona"]["server"]["package"]                       = "percona-server-server-5.5"
+
+
+
+
+
+# Since this is a development environment. Don't set a root password, or a password for the debian maintenance user.
+default["percona"]["skip_passwords"]                          = true
+default["percona"]["server"]["debian_username"]                 = "root"
+default["percona"]["main_config_file"]                          = "/etc/my.cnf"
+

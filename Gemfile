@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'chef'
+
 gem "berkshelf", github: "berkshelf/berkshelf"
 gem "vagrant", github: "mitchellh/vagrant", tag: "v1.5.0"
 

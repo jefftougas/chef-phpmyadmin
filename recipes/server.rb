@@ -24,6 +24,20 @@ include_recipe 'apt-dotdeb'
 
 # Install the Percona MySQL Client
 include_recipe 'percona::client'
+
+# MySQL Root User password when running chef-solo will be "solotesting"
+unless Chef::Config[:solo] || node[:percona][:server][:root_password]
+  node.set['percona']['server']['root_password'] = "therootisonfire"
+  node.save
+end
+
+# Password for the system user of mysql  chef-solo will be "solotesting"
+unless Chef::Config[:solo] || node[:percona][:server][:debian_password]
+  node.set['percona']['server']['debian_password'] = "thesystemisonfire"
+  node.save
+end
+
+
 include_recipe 'percona::server'
 
 include_recipe 'percona::toolkit'

@@ -19,6 +19,8 @@ $cfg['blowfish_secret'] = '<%= node['phpmyadmin']['blowfish_secret'] %>' ; /* YO
  */
 $i = 0;
 
+$cfg['Servers'][$i]['AllowNoPassword'] = false;
+
 foreach(glob('<%= node['phpmyadmin']['home'] %>/conf.d/*.inc.php', GLOB_NOSORT) as $conf)
 	@include $conf;
 

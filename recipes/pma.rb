@@ -101,6 +101,10 @@ unless Chef::Config[:solo] || node['phpmyadmin']['blowfish_secret']
   node.save
 end
 
+
+
+
+
 template "#{home}/config.inc.php" do
 	source 'config.inc.php.erb'
 	owner user
@@ -123,6 +127,19 @@ phpmyadmin_db 'Test DB' do
   host '127.0.0.1'
   port 3306
   username 'root'
-  password 'password'
+  password  node[:percona][:server][:root_password]
   hide_dbs %w{ information_schema mysql phpmyadmin performance_schema }
+  pma_username 'pma_controller'
+  pma_password 'pma_controller_pass'
+  auth_type 'config'
+end
+
+phpmyadmin_pmadb 'Test DB' do
+  name 'phpmyadminControlDb'
+  host '127.0.0.1'
+  root_username 'root'
+  root_password  node[:percona][:server][:root_password]
+  pma_database 'pma_controldb'
+  pma_username 'pma_controller'
+  pma_password 'pma_controller_pass'
 end

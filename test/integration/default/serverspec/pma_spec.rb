@@ -18,3 +18,7 @@ end
 describe file('/etc/apache2/sites-enabled/phpmyadmin.conf') do
   it { should be_file }
 end
+
+describe command('mysql -uroot -ptherootisonfire --skip-column-names --batch -e \'show databases like "%pma%" \'') do
+  it { should return_stdout 'pma_controldb' }
+end

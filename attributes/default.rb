@@ -19,6 +19,8 @@
 
 default['phpmyadmin']['version'] = '4.1.9'
 default['phpmyadmin']['checksum'] = 'adfaa90b0a0051eab82dff6c65b770b487afb8a0d81cbd2f83a69d4b50484456'
+
+default['phpmyadmin']['checksum'] = '90babe534fc203951377ee12c2bc9499';
 default['phpmyadmin']['mirror'] = 'http://downloads.sourceforge.net/project/phpmyadmin/phpMyAdmin'
 
 default['phpmyadmin']['fpm'] = false
@@ -76,16 +78,11 @@ default["percona"]["server"]["enable"]                          = true
 
 
 default["percona"]["auto_restart"] = true
-default["percona"]["server"]["socket"]                        = "/var/run/mysqld/mysqld.sock"
-default["percona"]["server"]["default_storage_engine"]        = "InnoDB"
-default["percona"]["server"]["includedir"]                    = "/etc/mysql/conf.d/"
-default["percona"]["server"]["pidfile"]                       = "/var/run/mysqld/mysqld.pid"
 default["percona"]["server"]["package"]                       = "percona-server-server-5.5"
 
+default["percona"]["server"]["root_password"]                       = "therootisonfire"
+default["percona"]["server"]["debian_password"]                       = "password_debian"
 
-
-# Since this is a development environment. Don't set a root password, or a password for the debian maintenance user.
-default["percona"]["skip_passwords"]                          = true
-default["percona"]["server"]["debian_username"]                 = "root"
 default["percona"]["main_config_file"]                          = "/etc/my.cnf"
 
+node[:percona][:encrypted_data_bag]

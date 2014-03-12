@@ -18,7 +18,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-  
+
+
+VAGRANTFILE_API_VERSION = "2"
+
 Vagrant.configure('2') do |config|
 
   config.berkshelf.enabled = true

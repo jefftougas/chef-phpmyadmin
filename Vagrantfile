@@ -24,11 +24,13 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure('2') do |config|
 
-  config.berkshelf.enabled = true
-  config.omnibus.chef_version = :latest
+  #config.berkshelf.enabled = true
+  #config.omnibus.chef_version = :latest
 
-  config.vm.box_url = "https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box"
-  config.vm.box = "opscode_ubuntu-12.04_provisionerless"
+  config.vm.box = "hashicorp/precise64"
+
+  #config.vm.box_url = "https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box"
+  #config.vm.box = "opscode_ubuntu-12.04_provisionerless"
 
   # The ip address we'll assign to this virtual machine
   config.vm.network :private_network, ip: "33.33.33.10"
@@ -40,7 +42,6 @@ Vagrant.configure('2') do |config|
     v.gui = false
   end
 
-  config.vm.box = 'ubuntu'
   config.vm.hostname = 'phpmyadmin'
   config.vm.provision :chef_solo do |chef|
     chef.arguments = '-Fdoc'

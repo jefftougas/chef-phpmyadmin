@@ -11,7 +11,7 @@ $cfg['Servers'][$i]['connect_type'] = 'tcp';
 $cfg['Servers'][$i]['compress'] = true;
 /* Select mysqli if your server has it */
 $cfg['Servers'][$i]['extension'] = 'mysqli';
-$cfg['Servers'][$i]['AllowNoPassword'] = false;
+$cfg['Servers'][$i]['AllowNoPassword'] = true;
 
 $cfg['Servers'][$i]['user'] = '<%= @user %>';
 $cfg['Servers'][$i]['password'] = '<%= @pass %>';

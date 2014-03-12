@@ -11,7 +11,7 @@ The goal is to use this cookbook in our production servers, with some customizat
 for Pressable customers. Hopefully, others can use this to install PHPMyAdmin in their infrastructure as well.
 
 
-## Requirements
+## Chef Requirements
 
 
 This depends on the following cookbooks
@@ -37,10 +37,21 @@ to install phpmyadmin to a local server without any databases, or other web apps
 Ideally, this cookbook is included in your larger set of infrastructure cookbooks, using Berkshelf
 or something along the lines.
 
-```Berksfile
- site :opscode
+### Getting it to work on OS X
 
- metadata
+1. Install VirtualBox and Vagrant (https://www.virtualbox.org/wiki/Downloads)
+2. Install Vagrant (http://www.vagrantup.com/downloads.html)
+
+Open up your terminal and add some Vagrant plugins
+
+```bash
+vagrant plugin install vagrant-berkshelf
+vagrant plugin install vagrant-hostsupdater
+vagrant plugin install vagrant-omnibus
+```
+
+
+```Berksfile
 
  ... your other stuff.
 

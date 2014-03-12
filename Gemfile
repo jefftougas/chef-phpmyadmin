@@ -1,12 +1,17 @@
 source 'https://rubygems.org'
 
-gem 'berkshelf'
+gem "berkshelf", github: "berkshelf/berkshelf"
+gem "vagrant", github: "mitchellh/vagrant", tag: "v1.5.0"
+
+gem 'vagrant-berkshelf', github: "berkshelf/vagrant-berkshelf"
+gem 'vagrant-omnibus', github: "schisamo/vagrant-omnibus"
 
 gem 'test-kitchen'
-gem 'kitchen-vagrant'
-gem 'chefspec',   '~> 3.0'
-gem 'foodcritic', '~> 2.2'
-gem 'rubocop',    '~> 0.12'
+
+gem 'chefspec'
+gem 'foodcritic'
+gem 'rubocop'
 gem 'chef-zero'
 gem 'rake'
 gem 'kitchen-rackspace'
+gem 'kitchen-vagrant'

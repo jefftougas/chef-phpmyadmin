@@ -1,7 +1,6 @@
-site :opscode
+source "http://api.berkshelf.com"
 
 ## This needed from Berkshelf 3.0 onwards
-#source "http://api.berkshelf.com"
 
 metadata
 

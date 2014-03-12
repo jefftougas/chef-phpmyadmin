@@ -117,3 +117,12 @@ web_app "phpmyadmin" do
   server_name node['fqdn']
   docroot "/opt/phpmyadmin"
 end
+
+
+phpmyadmin_db 'Test DB' do
+  host '127.0.0.1'
+  port 3306
+  username 'root'
+  password 'password'
+  hide_dbs %w{ information_schema mysql phpmyadmin performance_schema }
+end

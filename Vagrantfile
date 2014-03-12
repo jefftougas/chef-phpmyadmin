@@ -42,8 +42,7 @@ Vagrant.configure('2') do |config|
   config.vm.provision :chef_solo do |chef|
     chef.arguments = '-Fdoc'
     chef.run_list = [
-      'recipe[phpmyadmin::server]',
-      'recipe[phpmyadmin::pma]'
+      'recipe[phpmyadmin::default]'
     ]
 
   end

@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'chef'
 
 gem "berkshelf", github: "berkshelf/berkshelf"
-gem "vagrant", github: "mitchellh/vagrant", tag: "v1.5.0"
+gem "vagrant", github: "mitchellh/vagrant", tag: "v1.5.1"
 
 gem 'vagrant-berkshelf', github: "berkshelf/vagrant-berkshelf"
 gem 'vagrant-omnibus', github: "schisamo/vagrant-omnibus"

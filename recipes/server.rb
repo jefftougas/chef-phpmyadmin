@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: phpmyadmin
+# Cookbook Name:: phpmyadmin4
 # Recipe:: server
 #
 # Copyright 2014 Pressable

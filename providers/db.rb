@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: phpmyadmin
+# Cookbook Name:: phpmyadmin4
 # Provider:: db
 #
 # Copyright 2012, Panagiotis Papadomitsos
@@ -25,7 +25,7 @@ action :create do
 	new_resource.updated_by_last_action(false)
 
 	a = template "#{node['phpmyadmin']['home']}/conf.d/#{new_resource.name.downcase.gsub(' ','_')}.inc.php" do
-		cookbook 'phpmyadmin'
+		cookbook 'phpmyadmin4'
 		source 'dbinstance.inc.php.erb'
 		owner node['phpmyadmin']['user']
 		group node['phpmyadmin']['group']

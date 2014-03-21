@@ -1,4 +1,4 @@
-name              'phpmyadmin'
+name              'phpmyadmin4'
 maintainer        'Vid Luther'
 maintainer_email  'vid@pressable.com'
 license           'Apache Public License 2.0'

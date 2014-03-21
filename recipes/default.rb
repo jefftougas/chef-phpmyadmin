@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: phpmyadmin
+# Cookbook Name:: phpmyadmin4
 # Recipe:: default
 #
 # Copyright 2014 Pressable
@@ -33,7 +33,6 @@ package "apt-transport-https" do
   action :upgrade
 end
 
-include_recipe 'phpmyadmin::server'
-include_recipe 'phpmyadmin::pma'
-
+include_recipe 'phpmyadmin4::server'
+include_recipe 'phpmyadmin4::pma'
 

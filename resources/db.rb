@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: phpmyadmin
+# Cookbook Name:: phpmyadmin4
 # Resource:: db
 #
 # Copyright 2012, Panagiotis Papadomitsos

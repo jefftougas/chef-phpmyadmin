@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: phpmyadmin
+# Cookbook Name:: phpmyadmin4
 # Recipe:: pma
 #
 # Copyright 2014 Pressable
@@ -126,7 +126,7 @@ end
 
 ## Setup the PMA control database and setup the user for it
 
-phpmyadmin_pmadb 'phpmyadmin' do
+phpmyadmin4_pmadb 'phpmyadmin' do
   host '127.0.0.1'
   port  3306
   root_username 'root'
@@ -140,7 +140,7 @@ end
 ## Create the configuration file for the local DB server
 ## This file is going to be in pmaroot/conf.d/
 
-phpmyadmin_db 'test_kitchen_server' do
+phpmyadmin4_db 'test_kitchen_server' do
   name "Test Kitchen Server"
   host '127.0.0.1'
   port 3306

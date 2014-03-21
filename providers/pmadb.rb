@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: phpmyadmin
+# Cookbook Name:: phpmyadmin4
 # Provider:: pmadb
 #
 # Copyright 2012, Panagiotis Papadomitsos
@@ -22,7 +22,7 @@ action :create do
 	new_resource.updated_by_last_action(false)
 
 	a = template "#{Chef::Config['file_cache_path']}/phpmyadmin-#{new_resource.host}.sql" do
-		cookbook 'phpmyadmin'
+		cookbook 'phpmyadmin4'
 		source 'phpmyadmin.sql.erb'
 		owner 'root'
 		group 'root'

@@ -1,6 +1,7 @@
 ---
 driver:
   name: rackspace
+  server_name: kitchenpma
   rackspace_username:	<%= ENV['RACKSPACE_CI_USERNAME'] %>
   rackspace_api_key:  <%= ENV['RACKSPACE_CI_API_KEY'] %>
   require_chef_omnibus: latest

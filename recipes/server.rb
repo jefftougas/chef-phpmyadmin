@@ -21,9 +21,13 @@ require 'digest/sha1'
 
 include_recipe 'apt'
 include_recipe 'apt-dotdeb'
+include_recipe 'percona::toolkit'
 
-# Install the Percona MySQL Client
-include_recipe 'percona::client'
+# Install the Percona MySQL Server
+
+include_recipe 'percona::server'
+
+#include_recipe 'percona::client'
 
 # MySQL Root User password when running chef-solo will be "solotesting"
 unless Chef::Config[:solo] || node[:percona][:server][:root_password]
@@ -38,9 +42,6 @@ unless Chef::Config[:solo] || node[:percona][:server][:debian_password]
 end
 
 
-include_recipe 'percona::server'
-
-include_recipe 'percona::toolkit'
 
 
 package "apt-transport-https" do

@@ -1,13 +1,18 @@
 ---
 driver:
   name: vagrant
-  require_chef_omnibus: latest
+  hostname: phpmyadmin
+  box: hashicorp/precise64
+  require_chef_omnibus: true
+  network:
+  - ["forwarded_port", {guest: 80, host: 8080}]
+  - ["private_network", {ip: "33.33.33.36"}]
 
 provisioner:
   name: chef_solo
 
 platforms:
-  - name: ubuntu-12.04
+  - name: phpmyadmin
 
 suites:
   - name: default

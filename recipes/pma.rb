@@ -123,7 +123,25 @@ web_app "phpmyadmin" do
 end
 
 
-phpmyadmin_db 'Test DB' do
+
+## Setup the PMA control database and setup the user for it
+
+phpmyadmin_pmadb 'phpmyadmin' do
+  host '127.0.0.1'
+  port  3306
+  root_username 'root'
+  root_password  node[:percona][:server][:root_password]
+  pma_database 'phpmyadmin'
+  pma_username 'pma_control'
+  pma_password 'controller_pass'
+end
+
+
+## Create the configuration file for the local DB server
+## This file is going to be in pmaroot/conf.d/
+
+phpmyadmin_db 'test_kitchen_server' do
+  name "Test Kitchen Server"
   host '127.0.0.1'
   port 3306
   username 'root'
@@ -131,15 +149,6 @@ phpmyadmin_db 'Test DB' do
   hide_dbs %w{ information_schema mysql phpmyadmin performance_schema }
   pma_username 'pma_controller'
   pma_password 'pma_controller_pass'
+  pma_database 'phpmyadmin'
   auth_type 'config'
-end
-
-phpmyadmin_pmadb 'Test DB' do
-  name 'phpmyadminControlDb'
-  host '127.0.0.1'
-  root_username 'root'
-  root_password  node[:percona][:server][:root_password]
-  pma_database 'pma_controldb'
-  pma_username 'pma_controller'
-  pma_password 'pma_controller_pass'
 end

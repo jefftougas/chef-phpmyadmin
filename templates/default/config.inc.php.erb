@@ -19,7 +19,6 @@ $cfg['blowfish_secret'] = '<%= node['phpmyadmin']['blowfish_secret'] %>' ; /* YO
  */
 $i = 0;
 
-$cfg['Servers'][$i]['AllowNoPassword'] = false;
 
 foreach(glob('<%= node['phpmyadmin']['home'] %>/conf.d/*.inc.php', GLOB_NOSORT) as $conf)
 	@include $conf;
@@ -31,13 +30,22 @@ $cfg['UploadDir'] = '<%= node['phpmyadmin']['upload_dir'] %>';
 $cfg['SaveDir'] = '<%= node['phpmyadmin']['save_dir'] %>';
 
 $cfg['SuhosinDisableWarning'] = true;
+$cfg['VersionCheck'] = false;
+$cfg['NavigationDisplayServers'] = false;
 
+$cfg['ShowCreateDb'] = false;
+$cfg['ShowStats'] = false;
+$cfg['ShowServerInfo'] = false;
+$cfg['ShowChgPassword'] = false;
+$cfg['UserprefsDisallow'] = array('ShowCreateDb', 'ShowStats', 'ShowServerInfo');
+
+$cfg['PmaNoRelation_DisableWarning'] = true; 
 /**
  * Defines whether a user should be displayed a "show all (records)"
  * button in browse mode or not.
  * default = false
  */
-$cfg['ShowAll'] = true;
+$cfg['ShowAll'] = false;
 
 /**
  * Number of rows displayed when browsing a result set. If the result

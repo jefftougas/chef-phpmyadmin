@@ -17,6 +17,8 @@
 # limitations under the License.
 #
 
+## Creates a config file in phpmyadminroot/conf.d/name.inc.php
+
 action :create do
 	Chef::Log.info("Creating PHPMyAdmin database profile for: #{new_resource.name}")
 	new_resource.hide_dbs = [ new_resource.hide_dbs ] if new_resource.hide_dbs.instance_of?(String)

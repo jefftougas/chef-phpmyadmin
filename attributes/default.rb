@@ -51,6 +51,7 @@ default['phpmyadmin']['default_display'] = 'horizontal'
 default['phpmyadmin']['query_history'] = true
 default['phpmyadmin']['query_history_size'] = 100
 
+default['pr-php']['packages']['libapache2-mod-php5'] = nil
 
 default['pr-php']['packages']['php5'] = nil
 default['pr-php']['packages']['php5-apc']  = nil
